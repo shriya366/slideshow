@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fade Slideshow - New Images</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 600px;
+      height: 350px;
+      border: 4px solid white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 30px #fff;
+    }
+
+    .fade-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      object-fit: cover;
+    }
+
+    .fade-image.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+  <img class="fade-image active" src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&w=600&h=350&q=80" alt="Lake with mountains">
+  <img class="fade-image" src="https://images.unsplash.com/photo-1503437313881-503a91226402?auto=format&fit=crop&w=600&h=350&q=80" alt="Forest with fog">
+  <img class="fade-image" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&h=350&q=80" alt="Sunset over water">
+</div>
+
+<script>
+  const images = document.querySelectorAll(".fade-image");
+  let current = 0;
+
+  setInterval(() => {
+    images[current].classList.remove("active");
+    current = (current + 1) % images.length;
+    images[current].classList.add("active");
+  }, 3000);
+</script>
+
+</body>
+</html>
